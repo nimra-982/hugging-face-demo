@@ -1,12 +1,12 @@
 from transformers import pipeline
 import gradio as gr
 
-model = pipeline(
-    "summarization",
-)
+# ✅ Force PyTorch to avoid TensorFlow/Keras
+model = pipeline("summarization", framework="pt")
+
 def predict(prompt):
     summary = model(prompt)[0]["summary_text"]
     return summary
-# create an interface for the model
-with gr.Interface(predict, "textbox", "text") as interface:
-    interface.launch()
+
+interface = gr.Interface(fn=predict, inputs="textbox", outputs="text")
+interface.launch()
