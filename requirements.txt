@@ -1,5 +1,6 @@
-gradio
-torch
+
 transformers==4.30.2    # or your preferred version
 tf-keras
-tensorflow==2.19.0     # or compatible TF version
+transformers==4.30.2
+torch==2.1.0
+gradio==4.25.0
